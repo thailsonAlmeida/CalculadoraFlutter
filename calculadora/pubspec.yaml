@@ -63,6 +63,27 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
+  assets:
+    - assets/images/button0.png
+    - assets/images/button1.png
+    - assets/images/button2.png
+    - assets/images/button3.png
+    - assets/images/button4.png
+    - assets/images/button5.png
+    - assets/images/button6.png
+    - assets/images/button7.png
+    - assets/images/button8.png
+    - assets/images/button9.png
+    - assets/images/buttonAC.png
+    - assets/images/buttonBackspace.png
+    - assets/images/buttonDiv.png
+    - assets/images/buttonEquals.png
+    - assets/images/buttonMul.png
+    - assets/images/buttonPlus.png
+    - assets/images/buttonSub.png
+    - assets/images/buttonVir.png
+    - assets/images/buttonWhit.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

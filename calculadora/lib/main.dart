@@ -66,6 +66,12 @@ class _MyAppState extends State<MyApp> {
         }
 
         if (symbolMath == '/') {
+          if (double.parse(screenAPP) * 1 == 0) {
+            return;
+          }
+        }
+
+        if (symbolMath == '/') {
           resultCalc = firstNumbersScr / double.parse(screenAPP);
         }
 
@@ -90,6 +96,12 @@ class _MyAppState extends State<MyApp> {
         });
         break;
 
+      case '<-':
+        setState(() {
+          screenAPP = screenAPP.substring(0, screenAPP.length - 1);
+        });
+        break;
+
       default:
         screenAPP += numberKeyboard;
         break;
@@ -100,222 +112,160 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
+          /*appBar: AppBar(
             title: const Center(
               child: Text('Calculadora'),
             ),
-          ),
+          ),*/
           body: Column(
-            /***************
+        /***************
              * screen
              * *************/
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    screenAPP,
-                    style: const TextStyle(fontSize: 70),
-                  ),
-                ],
-              ),
-              /***************
-              * keyboard
-              * **************/
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      calc('AC');
-                    },
-                    child: const Text(
-                      'AC',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  const Text(''),
-                  const Text(''),
-                  GestureDetector(
-                    onTap: () {
-                      calc('<-');
-                    },
-                    child: const Text(
-                      '<-',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      calc('7');
-                    },
-                    child: const Text(
-                      '7',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('8');
-                    },
-                    child: const Text(
-                      '8',
-                      style: TextStyle(
-                        fontSize: 40,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('9');
-                    },
-                    child: const Text(
-                      '9',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('/');
-                    },
-                    child: const Text(
-                      '/',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      calc('4');
-                    },
-                    child: const Text(
-                      '4',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('5');
-                    },
-                    child: const Text(
-                      '5',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('6');
-                    },
-                    child: const Text(
-                      '6',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('x');
-                    },
-                    child: const Text(
-                      'x',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      calc('1');
-                    },
-                    child: const Text(
-                      '1',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('2');
-                    },
-                    child: const Text(
-                      '2',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('3');
-                    },
-                    child: const Text(
-                      '3',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('-');
-                    },
-                    child: const Text(
-                      '-',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      calc('0');
-                    },
-                    child: const Text(
-                      '0',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc(',');
-                    },
-                    child: const Text(
-                      ',',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('=');
-                    },
-                    child: const Text(
-                      '=',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      calc('+');
-                    },
-                    child: const Text(
-                      '+',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
+              Text(
+                screenAPP,
+                style: const TextStyle(fontSize: 70),
               ),
             ],
-          )),
+          ),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+          const Row(mainAxisAlignment: MainAxisAlignment.end),
+
+          /***************
+              * keyboard
+              * **************/
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    calc('AC');
+                  },
+                  child: Image.asset('assets/images/buttonAC.png')),
+              Image.asset('assets/images/buttonWhit.png'),
+              Image.asset('assets/images/buttonWhit.png'),
+              GestureDetector(
+                onTap: () {
+                  calc('<-');
+                },
+                child: Image.asset('assets/images/buttonBackspace.png'),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    calc('7');
+                  },
+                  child: Image.asset('assets/images/button7.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('8');
+                  },
+                  child: Image.asset('assets/images/button8.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('9');
+                  },
+                  child: Image.asset('assets/images/button9.png')),
+              GestureDetector(
+                onTap: () {
+                  calc('/');
+                },
+                child: Image.asset('assets/images/buttonDiv.png'),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    calc('4');
+                  },
+                  child: Image.asset('assets/images/button4.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('5');
+                  },
+                  child: Image.asset('assets/images/button5.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('6');
+                  },
+                  child: Image.asset('assets/images/button6.png')),
+              GestureDetector(
+                onTap: () {
+                  calc('x');
+                },
+                child: Image.asset('assets/images/buttonMul.png'),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    calc('1');
+                  },
+                  child: Image.asset('assets/images/button1.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('2');
+                  },
+                  child: Image.asset('assets/images/button2.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('3');
+                  },
+                  child: Image.asset('assets/images/button3.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('-');
+                  },
+                  child: Image.asset('assets/images/buttonSub.png')),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    calc('0');
+                  },
+                  child: Image.asset('assets/images/button0.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc(',');
+                  },
+                  child: Image.asset('assets/images/buttonVir.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('=');
+                  },
+                  child: Image.asset('assets/images/buttonEquals.png')),
+              GestureDetector(
+                  onTap: () {
+                    calc('+');
+                  },
+                  child: Image.asset('assets/images/buttonPlus.png')),
+            ],
+          ),
+        ],
+      )),
     );
   }
 }
