@@ -13,6 +13,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String screenAPP = '';
+  double firstNumbersScr = 0.0;
+  String symbolMath = '';
 
   void calc(String numberKeyboard) {
     switch (numberKeyboard) {
@@ -26,9 +28,61 @@ class _MyAppState extends State<MyApp> {
       case '7':
       case '8':
       case '9':
+      case ',':
         setState(() {
           screenAPP += numberKeyboard;
+          screenAPP = screenAPP.replaceAll(',', '.');
+          if (screenAPP.contains('.')) {
+          } else {
+            int numberKeyboardInt = int.parse(screenAPP);
+            screenAPP = numberKeyboardInt.toString();
+          }
+          screenAPP = screenAPP.replaceAll('.', ',');
         });
+        break;
+      case '+':
+      case '-':
+      case 'x':
+      case '/':
+        symbolMath = numberKeyboard;
+        screenAPP = screenAPP.replaceAll(',', '.');
+        firstNumbersScr = double.parse(screenAPP);
+        screenAPP = screenAPP.replaceAll('.', ',');
+        screenAPP = '0';
+        break;
+      case '=':
+        late double resultCalc;
+
+        if (symbolMath == '+') {
+          resultCalc = firstNumbersScr + double.parse(screenAPP);
+        }
+
+        if (symbolMath == '-') {
+          resultCalc = firstNumbersScr - double.parse(screenAPP);
+        }
+
+        if (symbolMath == 'x') {
+          resultCalc = firstNumbersScr * double.parse(screenAPP);
+        }
+
+        if (symbolMath == '/') {
+          resultCalc = firstNumbersScr / double.parse(screenAPP);
+        }
+
+        String resultCalcString = resultCalc.toString();
+
+        List<String> resultCalcZero = resultCalcString.split('.');
+
+        if (int.parse(resultCalcZero[1]) * 1 == 0) {
+          int resultCalcInt = int.parse(resultCalcZero[0]);
+          setState(() {
+            screenAPP = resultCalcInt.toString();
+          });
+        } else {
+          setState(() {
+            screenAPP = resultCalc.toString();
+          });
+        }
         break;
       case 'AC':
         setState(() {
